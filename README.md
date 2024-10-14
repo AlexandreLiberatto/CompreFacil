@@ -1,82 +1,63 @@
-```markdown
+# CompreFácil - Serviço de Pagamento para E-Commerce
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Logo NestJS" />
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Visão Geral
 
-<p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-<p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-<a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-<a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-
-## Descrição
-
-Aplicação de pagamento para comércio eletrônico.
-
-O comércio eletrônico já é uma realidade estabelecida em nossa sociedade, onde um grande volume de negociações é realizado na internet, por meio de plataformas ou sistemas web, nos quais as lojas, comércio e indústria disponibilizam seus produtos e serviços. Para atender a essa demanda cada vez maior, a tecnologia desempenha um papel crucial, pois a partir dela são disponibilizados os recursos e meios para viabilizar esse cenário.
-
-Porém, os custos para manter grandes estruturas computacionais sempre operacionais, independentemente dos picos de volumes de transações e negociações no comércio eletrônico, têm sido um problema, por serem valores muito elevados. Dessa forma, é preciso buscar soluções que possibilitem manter a disponibilidade dessas plataformas e sistemas web para o comércio, mas buscando reduzir os custos operacionais.
-
-Para propor uma solução, é importante conhecer todo o processo e características de funcionamento do comércio eletrônico. Sendo assim, observou-se que existem momentos específicos em que o volume de transações é maior e que, também, há partes do processamento computacional dessas transações que demandam mais recursos. Por isso, concebeu-se que, se houvesse uma possibilidade de separar as responsabilidades desses sistemas em serviços independentes, em que cada serviço pudesse ser escalonado também de forma independente, conforme a demanda, seria possível otimizar esses recursos computacionais, pois tais recursos não ficariam ociosos e seus custos seriam proporcionais ao seu uso, aumentando com as demandas por novas transações.
-
-Diante desse contexto, a empresa CompreFácil, que possui grande parcela de suas vendas em seu e-commerce, resolveu reestruturar sua plataforma, para reduzir custos operacionais e também garantir alta disponibilidade e uma melhor experiência para seus clientes. Para atender a essa necessidade, o time de TI da empresa foi encarregado de realizar uma análise e implementar alguns serviços distribuídos para esse sistema, por meio dos conceitos da arquitetura de microsserviços, criando inicialmente dois serviços independentes: um para processar os pagamentos e outro para notificar os usuários sobre a realização da compra e confirmação de pagamento.
+O CompreFácil é uma arquitetura de serviços distribuídos desenvolvida para gerenciar pagamentos em ambientes de e-commerce. Utiliza **NestJS**, **PostgreSQL**, **RabbitMQ** e **Docker** para criar um sistema de pagamentos escalável e eficiente, capaz de gerenciar transações e notificações entre diferentes serviços. Este sistema demonstra como a arquitetura de microsserviços pode otimizar o uso de recursos, permitindo a escalabilidade independente de cada serviço conforme a demanda.
 
 ## Funcionalidades
 
-O sistema inclui as seguintes funcionalidades:
+- **Processamento de Pagamentos**: Gerencia transações de pagamento de forma assíncrona.
+- **Serviço de Notificações**: Notifica os usuários sobre o status das transações.
+- **Arquitetura de Microsserviços**: Serviços independentes para pagamento e notificações, garantindo escalabilidade.
+- **PostgreSQL**: Banco de dados para gerenciamento dos dados das transações.
+- **RabbitMQ**: Sistema de mensageria para comunicação entre os serviços.
+- **Docker**: Serviços containerizados para facilitar o deploy e a gestão.
 
-1. Criar um novo projeto via NodeJS para prover interfaces de comunicação (REST e AMQP) para sistema de pagamento;
-2. Usar docker-compose para criar estruturas de banco de dados (Postgres) e sistema de mensageria (RabbitMQ);
-3. Criar um novo projeto via NodeJS para prover interfaces de comunicação (REST e AMQP) para sistema de notificação;
-4. Implementar fluxo de comunicação.
-5. Receber no serviço de pagamento a solicitação de transação (fluxo assíncrono):
-   - O sistema de pagamento armazena dados da transação com status pendente;
-   - O sistema de pagamento publica mensagem na fila para o sistema de notificação informar sobre o recebimento da solicitação de transação;
-   - O sistema de notificação lê a mensagem na fila e envia notificação ao usuário sobre o recebimento da solicitação de transação;
-   - O sistema de pagamento confirma a transação e atualiza o status para sucesso;
-   - O sistema de pagamento publica mensagem na fila para o sistema de notificação informar sobre a confirmação da transação;
-   - O sistema de notificação lê a mensagem na fila e envia notificação ao usuário sobre a confirmação da transação.
+## Tecnologias Utilizadas
 
-## Configuração do Projeto
+- **NestJS**: Framework para construção de aplicações server-side escaláveis e eficientes.
+- **PostgreSQL**: Banco de dados relacional open-source confiável para armazenar dados de transações.
+- **RabbitMQ**: Broker de mensagens para comunicação entre os microsserviços de pagamento e notificação.
+- **Docker**: Usado para containerizar os serviços como PostgreSQL e RabbitMQ, garantindo consistência entre ambientes.
+- **TypeScript**: Utilizado para escrever código escalável e com tipagem estática.
 
-Para instalar as dependências do projeto, utilize o seguinte comando:
+## Pré-requisitos
 
-```bash
-npm install
+- Node.js v16+
+- Docker instalado
+- PostgreSQL e RabbitMQ (via Docker)
 
-```
+## Instalação
 
-## Iniciando o PostgreSQL e RabbitMQ
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/AlexandreLiberatto/CompreFacil.git
+    cd CompreFacil
+    ```
 
-### PostgreSQL
+2. Instale as dependências:
+    ```bash
+    npm install
+    ```
 
-Para iniciar o PostgreSQL, execute o seguinte comando:
+3. Configure as variáveis de ambiente:
+   Copie o arquivo `.env.example` para `.env` e ajuste as variáveis conforme necessário.
+
+## Executando a Aplicação
+
+### Passo 1: Iniciar PostgreSQL e RabbitMQ usando Docker
+
+Para iniciar o PostgreSQL e o RabbitMQ, utilize o Docker Compose:
 
 ```bash
 docker-compose -f docker/docker-postgres.yml up -d
-```
-
-### RabbitMQ
-
-Para iniciar o RabbitMQ, utilize o comando:
-
-```bash
 docker-compose -f docker/docker-rabbitmq.yml up -d
 ```
-
-Após iniciar os serviços, você pode acessar a interface do RabbitMQ em `http://localhost:15672` usando as credenciais padrão (usuário: `guest`, senha: `guest`).
+Após iniciar os serviços, você pode acessar a interface do RabbitMQ em `http://localhost:15672` usando as credenciais padrão (usuário: `admin`, senha: `123456`).
 
 ## Execução do Projeto
 
@@ -136,13 +117,5 @@ O Nest é um projeto de código aberto licenciado sob a MIT. Ele pode crescer gr
 
 ## Contato
 
-- Autor - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## Licença
-
-Nest é [licenciado sob a MIT](
-
-LICENSE).
-```
+- Autor: Alexandre Liberatto
+- E-mail: alexandreliberatto@gmail.com
