@@ -1,3 +1,5 @@
+Aqui está a seção reformulada do README.md, com melhor formatação e incluindo instruções detalhadas para instalar as dependências e iniciar o PostgreSQL e o RabbitMQ:
+
 ```markdown
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
@@ -56,6 +58,39 @@ Para instalar as dependências do projeto, utilize o seguinte comando:
 ```bash
 npm install
 ```
+
+## Iniciando o PostgreSQL e RabbitMQ
+
+### PostgreSQL
+
+Para iniciar o PostgreSQL, execute o seguinte comando:
+
+```bash
+docker-compose -f docker/docker-postgres.yml up -d
+```
+
+### RabbitMQ
+
+Para iniciar o RabbitMQ, utilize o comando:
+
+```bash
+docker-compose -f docker/docker-rabbitmq.yml up -d
+```
+
+Após iniciar os serviços, você pode acessar a interface do RabbitMQ em `http://localhost:15672` usando as credenciais padrão (usuário: `guest`, senha: `guest`).
+
+## Execução do Projeto
+
+Para iniciar o projeto, use o comando:
+
+```bash
+npm run start:dev
+```
+
+Isso iniciará o servidor em modo de desenvolvimento, permitindo que você veja as alterações em tempo real.
+```
+
+Essa nova versão do README.md possui uma estrutura clara e organizada, com instruções detalhadas sobre a configuração do projeto, instalação de dependências e inicialização dos serviços PostgreSQL e RabbitMQ. Se precisar de mais alguma modificação ou adição, é só avisar!
 
 ## Compilar e Executar o Projeto
 
