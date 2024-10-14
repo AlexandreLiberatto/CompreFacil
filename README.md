@@ -1,3 +1,4 @@
+```markdown
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
@@ -54,7 +55,13 @@ Para instalar as dependências do projeto, utilize o seguinte comando:
 
 ```bash
 npm install
+```
 
+## Compilar e Executar o Projeto
+
+Para compilar e executar o projeto, utilize os seguintes comandos:
+
+```bash
 # Modo desenvolvimento
 npm run start
 
@@ -63,7 +70,13 @@ npm run start:dev
 
 # Modo produção
 npm run start:prod
+```
 
+## Executar Testes
+
+Para executar os testes, utilize os comandos abaixo:
+
+```bash
 # Testes unitários
 npm run test
 
@@ -72,5 +85,31 @@ npm run test:e2e
 
 # Cobertura de testes
 npm run test:cov
+```
 
+## Recursos
+
+Confira alguns recursos que podem ser úteis ao trabalhar com NestJS:
+
+- Visite a [Documentação do NestJS](https://docs.nestjs.com) para aprender mais sobre o framework.
+- Para perguntas e suporte, visite nosso [canal no Discord](https://discord.gg/G7Qnnhy).
+- Para aprofundar e obter mais experiência prática, confira nossos cursos de vídeo oficiais [aqui](https://courses.nestjs.com/).
+- Visualize seu gráfico de aplicação e interaja com a aplicação NestJS em tempo real usando [NestJS Devtools](https://devtools.nestjs.com).
+- Precisa de ajuda com seu projeto (de meio período a tempo integral)? Confira nosso [suporte empresarial oficial](https://enterprise.nestjs.com).
+- Para ficar atualizado e receber notícias, siga-nos no [Twitter](https://twitter.com/nestframework) e no [LinkedIn](https://linkedin.com/company/nestjs).
+- Está procurando emprego ou tem uma vaga para oferecer? Confira nosso [painel de empregos oficial](https://jobs.nestjs.com).
+
+## Suporte
+
+O Nest é um projeto de código aberto licenciado sob a MIT. Ele pode crescer graças aos patrocinadores e ao apoio dos incríveis apoiadores. Se você gostaria de se juntar a eles, por favor, [leia mais aqui](https://docs.nestjs.com/support).
+
+## Contato
+
+- Autor - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
+
+## Licença
+
+Nest é [licenciado sob a MIT](https://github.com/nestjs/nest/blob/master/LICENSE).
 ```
