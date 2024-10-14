@@ -55,6 +55,7 @@ Para instalar as dependências do projeto, utilize o seguinte comando:
 
 ```bash
 npm install
+
 ```
 
 ## Iniciando o PostgreSQL e RabbitMQ
