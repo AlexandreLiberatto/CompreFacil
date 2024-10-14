@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { CreditCardService } from './credit-card.service';
 import { CreditCardController } from './credit-card.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices'; // Importando o Transport
+import { PrismaService } from 'src/prisma_service';
 
 @Module({
   imports: [
@@ -21,6 +22,6 @@ import { ClientsModule, Transport } from '@nestjs/microservices'; // Importando 
     ]),
   ],
   controllers: [CreditCardController],
-  providers: [CreditCardService],
+  providers: [CreditCardService, PrismaService],
 })
 export class CreditCardModule {}
